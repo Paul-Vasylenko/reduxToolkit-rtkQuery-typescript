@@ -23,7 +23,7 @@ export const fetchUsers = createAsyncThunk(
       );
       return response.data;
     } catch (e) {
-      return "Error during fetching users";
+      return thunkAPI.rejectWithValue("Error while fetching user");
     }
   }
 );

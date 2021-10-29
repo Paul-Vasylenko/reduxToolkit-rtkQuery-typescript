@@ -17,7 +17,11 @@ const initialState: IUserState = {
 export const userSlice = createSlice({
   name: "user",
   initialState,
-  reducers: {},
+  reducers: {
+    addUser: (state, action: PayloadAction<Omit<IUser, "id">>) => {
+      state.users.push({ id: Date.now(), name: action.payload.name });
+    },
+  },
   extraReducers: {
     [fetchUsers.pending.type]: (state) => {
       state.loading = true;
